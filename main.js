@@ -32,9 +32,8 @@ function submitChoices() {
     console.log("Submit Test");
     let category = document.getElementById("category").value;
     let difficulty = document.getElementById("difficulty").value;
-console.log("Difficulty, ",difficulty);
+    console.log("Difficulty, ",difficulty);
     console.log(category);
-
     if (category === "Animals" && difficulty === "Easy") {
         console.log("Animals Easy");
         url = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=multiple';
@@ -65,7 +64,7 @@ console.log("Difficulty, ",difficulty);
         loadData();
     }
 
-    else if (category === "General Knowledge" && difficulty === "Medium") {
+    else if (category === document.getElementById("categories").options[1].value && difficulty === document.getElementById("difficulties").options[1].value) {
         console.log("General Knowledge Medium");
         url = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple';
         loadData();
@@ -101,11 +100,9 @@ console.log("Difficulty, ",difficulty);
         loadData();
     }
 
-    else if (category === "Surprise Me!" && difficulty === "Surprise Me!") {
-        console.log("All Random");
-        url = 'https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple';
+    else console.log("All Random");
+        url = 'https://opentdb.com/api.php?amount=10&type=multiple';
         loadData();
-    }
 
 
 }
