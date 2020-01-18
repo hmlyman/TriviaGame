@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trivia: I've got a question for you</title>
+        <link href="./style.css" rel="stylesheet" type="text/css">
+        <script defer src="./main.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Test Your Knowledge</h1>
+        </header>
+        <section id="choices">
+            <form>
+                <h2>First: Choose your category</h2><br>
+                <input list="categories" name="categories">
+                <datalist id="categories">
+                    <option value = "Animals"></option>
+                    <option value = "General Knowledge"></option>
+                    <option value = "Surprise Me!"></option>
+                </datalist>
+            </form>
+            <form>
+                <h2>Second: Choose your difficulty</h2><br>
+                <input list="difficulties" name="difficulties">
+                <datalist id="difficulties">
+                    <option value = "Easy"></option>
+                    <option value = "Medium"></option>
+                    <option value = "Hard"></option>
+                    <option value = "Surprise Me!"></option>
+                </datalist>
+                <input type = "submit" type="button" value="submit" onclick="submitChoices()">
+            </form>
+        </section>
+        <section id = "trivia">
+                <table>
+                        <tr>
+                            <th id="triviaQuestion"></th>
+                        </tr>
+                       <tr> 
+                            <th id="answer1"></th>
+                        </tr>
+                        <tr>
+                            <th id="answer2"></th>
+                        </tr>
+                        <tr>
+                            <th id="answer3"></th>
+                        </tr>
+                        <tr>
+                            <th id="answer4"></th>
+                        </tr>
+                        <tr>
+                            <th id="altText"></th>
+                        </tr>
+                        <tr>
+                            <th id="published"></th>
+                        </tr>
+                    </table>
+        </section>
+    </body>
