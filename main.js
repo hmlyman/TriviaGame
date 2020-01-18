@@ -30,8 +30,10 @@ loadData();
 function submitChoices() {
     event.preventDefault();
     console.log("Submit Test");
-    let category = document.getElementById("categories").value;
-    let difficulty = document.getElementById("difficulties").value;
+    let category = document.getElementById("category").value;
+    let difficulty = document.getElementById("difficulty").value;
+console.log("Difficulty, ",difficulty);
+    console.log(category);
 
     if (category === "Animals" && difficulty === "Easy") {
         console.log("Animals Easy");
