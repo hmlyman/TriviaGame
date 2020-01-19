@@ -5,10 +5,19 @@ let mediumGeneralKnowledge = 'https://opentdb.com/api.php?amount=5&category=9&di
 let easyGeneralKnowledge = 'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple';
 let hardGeneralKnowledge = 'https://opentdb.com/api.php?amount=5&category=9&difficulty=hard&type=multiple';
 let url = 'https://opentdb.com/api.php?amount=10';
+let availableQuestions = [];
+let score = 0;
+let currentQuestion = {};
+let questionCounter = 0;
 let request = new XMLHttpRequest();
 let triviaData;
+const correctBonus = 10;
+const maxQuestions = 5;
+
+let questions = []
 
 function loadData() {
+    
     request.open('GET', url, true);
     request.onload = loadComplete;
     request.send();
@@ -17,6 +26,18 @@ function loadData() {
 function loadComplete (){
     triviaData = JSON.parse(this.responseText);
     console.log(triviaData);
+    let formattedQuestion = {
+        question: triviaData.results[0].question};
+
+    let answerChoices = [...triviaData.results[0].incorrect_answers];
+    triviaData.answer = Math.floor(Math.random() * 3) + 1;
+    answerChoices.splice(triviaData.answer -1, 0, triviaData.results[0].correct_answer);
+
+    answerChoices.forEach((answer, index) => {
+        formattedQuestion["answer" + (index+1)] = answer;
+    })
+    return formattedQuestion;
+
     document.getElementById("triviaQuestion").innerHTML = triviaData.results[0].question;
     document.getElementById("answer1").innerHTML = triviaData.results[0].correct_answer;
     document.getElementById("answer2").innerHTML = triviaData.results[0].incorrect_answers[0];
@@ -105,11 +126,32 @@ function submitChoices() {
 
 }
 
+function startGame(){
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions]
+    console.log(availableQuestions);
+    getNewQuestion();
+}
+
 function getNewQuestion() {
     questionCounter++;
     let questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerHTML = current
+}
+
+function generateAnswers(){
+
+    let formattedQuestion = triviaData.questions;
+    let answerChoices = [...triviaData.incorrect_answers];
+    triviaData.answer = Math.floor(Math.random() * 3) + 1;
+    answerChoices.splice(triviaData.answer -1, 0, triviaData.correct_answer);
+
+    answerChoices.forEach((answer, index) => {
+        formattedQuestion["answer" + (index+1)] = answer;
+    })
+    return formattedQuestion;
 }
 
 function submitAnswer(){

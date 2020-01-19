@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+        <title>Trivia: I've got a question for you</title>
+        <link href="./style.css" rel="stylesheet" type="text/css">
+        <script defer src="./main.js"></script>
+    </head>
+    <body>
+        <div class="container">
+        <div class="column center">
+        <header>
+            <h1>Test Your Knowledge</h1>
+        </header>
+        <div id="choices">
+            <form>
+                <h2>First: Choose your category</h2><br>
+                <input list="categories" name="categories" id="category">
+                <datalist id="categories">
+                    <option value = "Animals"></option>
+                    <option value = "General Knowledge"></option>
+                    <option value = "Surprise Me!"></option>
+                </datalist>
+            </form>
+            <form>
+                <h2>Second: Choose your difficulty</h2><br>
+                <input list="difficulties" name="difficulties" id="difficulty">
+                <datalist id="difficulties">
+                    <option value = "Easy"></option>
+                    <option value = "Medium"></option>
+                    <option value = "Hard"></option>
+                    <option value = "Surprise Me!"></option>
+                </datalist>
+                <input type = "submit" type="button" class="submit" value="Submit Choices" onclick="submitChoices()">
+            </form>
+        </div>
+        <div id = "trivia">
+            <h3 id="triviaQuestion"></h3>
+            <table class="all-divs">
+                <tr>
+                    <th class="radio"><input type="radio" id="radioA" name="choice" value="A" checked>
+                        <label for="radioA">A</label>
+                    </th>
+                    <th><p class="answers" id="answer1"></p></th>
+                </tr>
+                <tr>
+                    <th class="radio"><input type="radio" id="radioB" name="choice" value="B">
+                        <label for="radioB">B</label>
+                    </th>
+                    <th><p class="answers" id="answer2"></p></th>
+                </tr>> 
+                <tr> 
+                    <th class="radio"><input type="radio" id="radioC" name="choice" value="C">
+                        <label for="radioC">C</label>
+                    </th>
+                    <th><p class="answers" id="answer3"></p></th>
+                </tr>
+                <tr>
+                    <th class="radio"><input type="radio" id="radioD" name="choice" value="D">
+                        <label for="radioD">D</label>
+                    </th>
+                    <th><p class="answers" id="answer4"></p></th>
+                </tr>
+            </table>
+            <div class="submitAnswer">
+                <button class= "submit" onclick="submitAnswer()">Submit Answer</button>
+            </div>
+        </div>
+        </div>
+        </section>
+    </body>
